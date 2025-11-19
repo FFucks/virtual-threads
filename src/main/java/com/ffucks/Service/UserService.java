@@ -14,6 +14,12 @@ public class UserService {
     public User getUser(int id) {
         try {
             return repository.findUser(id);
+
+            //It could be do this but spring boot manage the threads for me
+            /*Thread.startVirtualThread(() -> {
+                var user = repo.findUser(1);
+                System.out.println(user);
+            });*/
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
